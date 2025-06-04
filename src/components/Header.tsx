@@ -2,13 +2,12 @@
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -36,7 +35,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="text-xl font-bold gradient-text">
-            Portfolio
+            Mohammed Husain Fakih
           </div>
 
           {/* Desktop Navigation */}
@@ -54,6 +53,10 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" className="hidden md:flex">
+              <Download className="h-4 w-4 mr-2" />
+              Resume
+            </Button>
             <ThemeToggle />
             
             {/* Mobile Menu Button */}
@@ -82,6 +85,10 @@ export function Header() {
                   {item.name}
                 </a>
               ))}
+              <Button variant="outline" size="sm" className="w-fit mt-2">
+                <Download className="h-4 w-4 mr-2" />
+                Resume
+              </Button>
             </div>
           </nav>
         )}
