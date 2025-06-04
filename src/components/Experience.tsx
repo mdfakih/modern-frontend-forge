@@ -5,39 +5,87 @@ import { Building, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Senior Full-Stack Developer",
-    company: "Tech Innovations Inc.",
-    period: "2022 - Present",
-    description: "Leading development of data-intensive applications using Next.js 14 and modern React patterns. Specialized in creating intuitive data visualizations and implementing complex pivot table logic.",
-    technologies: ["Next.js", "React", "TypeScript", "MongoDB", "AWS"],
+    title: "Associate Software Engineer",
+    company: "TeamLease Edtech",
+    period: "Sep 2024 - Present",
+    description: "Building and maintaining CRM frontend using Next.js, React, and SCSS, ensuring responsiveness and modular code structure. Optimizing REST API integration and improving client-side caching.",
+    technologies: ["Next.js", "React", "SCSS", "REST API", "CRM"],
     achievements: [
-      "Architected scalable data visualization platform",
-      "Reduced load times by 40% through optimization",
-      "Led team of 5 developers"
+      "Enhanced app performance by 30% through optimized API integration",
+      "Built responsive and modular CRM frontend",
+      "Collaborated with backend teams for seamless API integration"
     ]
   },
   {
-    title: "Frontend Developer",
-    company: "Digital Solutions Ltd.",
-    period: "2020 - 2022",
-    description: "Developed responsive web applications with focus on user experience and performance. Integrated various payment systems and implemented real-time features.",
-    technologies: ["React", "Redux", "SCSS", "Node.js", "Express"],
+    title: "Freelance Developer",
+    company: "Remote",
+    period: "Jan 2024 - Jul 2024",
+    description: "Developed React-based Web3 projects, integrated MetaMask wallet, and built decentralized UI components. Customized and deployed open-source blockchain solutions.",
+    technologies: ["React", "Web3", "MetaMask", "Blockchain", "DeFi"],
     achievements: [
-      "Built comprehensive e-commerce platform",
-      "Integrated Razorpay payment gateway",
-      "Improved user engagement by 60%"
+      "Built decentralized UI components for Web3 applications",
+      "Integrated MetaMask wallet functionality",
+      "Customized open-source blockchain solutions"
     ]
   },
   {
-    title: "Junior Developer",
-    company: "StartUp Ventures",
-    period: "2019 - 2020",
-    description: "Started journey in web development, focusing on frontend technologies and learning full-stack development principles.",
-    technologies: ["JavaScript", "HTML5", "CSS3", "Bootstrap", "Git"],
+    title: "Senior Developer",
+    company: "Team Pumpkin",
+    period: "Aug 2023 - Nov 2023",
+    description: "Led front-end development of AI-powered applications using Next.js, Redux, Strapi, and Razorpay API. Integrated dynamic third-party APIs for image swapping and video generation.",
+    technologies: ["Next.js", "Redux", "Strapi", "Razorpay", "AI APIs"],
     achievements: [
-      "Delivered 15+ responsive web projects",
-      "Collaborated with design team effectively",
-      "Mentored junior interns"
+      "Led frontend development of AI-powered applications",
+      "Integrated dynamic third-party APIs for media processing",
+      "Implemented secure payment processing with Razorpay"
+    ]
+  },
+  {
+    title: "Full-stack Developer",
+    company: "Wow InfoBiz",
+    period: "Jan 2023 - Jun 2023",
+    description: "Developed web applications using MERN Stack, collaborated with backend teams, and led frontend development. Improved client satisfaction by delivering responsive modules on-time.",
+    technologies: ["MongoDB", "Express.js", "React", "Node.js", "MERN Stack"],
+    achievements: [
+      "Delivered 10+ responsive modules on-time",
+      "Improved client satisfaction through quality deliverables",
+      "Led frontend development initiatives"
+    ]
+  },
+  {
+    title: "Full-stack Developer",
+    company: "Dextopia",
+    period: "Jun 2022 - Jan 2023",
+    description: "Built blockchain-based finance apps, integrated smart contracts with MetaMask wallet connection. Customized GitHub projects and handled multiple client requirements independently.",
+    technologies: ["Blockchain", "Smart Contracts", "MetaMask", "DeFi", "Web3"],
+    achievements: [
+      "Built blockchain-based finance applications",
+      "Integrated smart contracts with wallet connections",
+      "Managed multiple client requirements independently"
+    ]
+  },
+  {
+    title: "Web Developer",
+    company: "Wow InfoBiz",
+    period: "Oct 2021 - May 2022",
+    description: "Developed cryptocurrency-based web applications using React.js, Redux Toolkit, and REST API integrations.",
+    technologies: ["React.js", "Redux Toolkit", "REST API", "Cryptocurrency"],
+    achievements: [
+      "Developed cryptocurrency-based web applications",
+      "Implemented state management with Redux Toolkit",
+      "Integrated multiple REST APIs for crypto data"
+    ]
+  },
+  {
+    title: "Oracle User / Production Controller",
+    company: "Gulf Catering Company",
+    period: "2017 - 2021",
+    description: "Managed operations using Oracle E-Business Suite for inventory, production, and staffing communications. Acted as liaison between company and Ministry of Health departments.",
+    technologies: ["Oracle E-Business Suite", "Inventory Management", "Production Control"],
+    achievements: [
+      "Managed operations using Oracle E-Business Suite",
+      "Coordinated inventory and production workflows",
+      "Served as liaison with government departments"
     ]
   }
 ];
@@ -64,7 +112,7 @@ export function Experience() {
               <div 
                 key={index} 
                 className="relative mb-12 ml-12 md:ml-20 animate-fade-in-left"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Timeline dot */}
                 <div className="absolute -left-14 md:-left-22 top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg"></div>

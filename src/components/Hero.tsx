@@ -1,9 +1,19 @@
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TypeWriter } from "./TypeWriter";
 
 export function Hero() {
+  const developerFeatures = [
+    "React Specialist",
+    "Next.js Expert", 
+    "Full-Stack Developer",
+    "Web3 Developer",
+    "MERN Stack Developer",
+    "Frontend Architect"
+  ];
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Animated background elements */}
@@ -18,11 +28,31 @@ export function Hero() {
             Available for Hire
           </Badge>
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            <span className="gradient-text">Data-Driven</span>
-            <br />
-            <span className="text-foreground">Developer</span>
-          </h1>
+          <div className="space-y-2">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-2">
+              Mohammed Husain Fakih
+            </h1>
+            <div className="text-3xl md:text-5xl font-bold tracking-tight min-h-[1.2em]">
+              <TypeWriter 
+                texts={developerFeatures}
+                speed={80}
+                deleteSpeed={40}
+                delayBetween={2000}
+                className="gradient-text"
+              />
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              <span>Bhiwandi, Maharashtra, India</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <span>+91 9028435660</span>
+            </div>
+          </div>
           
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Architecting elegant solutions with <strong>Next.js</strong>, <strong>React</strong>, and precision. 
@@ -30,17 +60,23 @@ export function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <Button size="lg" className="group">
-              <Mail className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-              Get In Touch
+            <Button size="lg" className="group" asChild>
+              <a href="mailto:mf9049@gmail.com">
+                <Mail className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                Get In Touch
+              </a>
             </Button>
             
             <div className="flex gap-2">
-              <Button variant="outline" size="icon" className="hover:scale-110 transition-transform">
-                <Github className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="hover:scale-110 transition-transform" asChild>
+                <a href="https://github.com/mdfakih" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-4 w-4" />
+                </a>
               </Button>
-              <Button variant="outline" size="icon" className="hover:scale-110 transition-transform">
-                <Linkedin className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="hover:scale-110 transition-transform" asChild>
+                <a href="https://linkedin.com/in/mohammed-husain-fakih" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="h-4 w-4" />
+                </a>
               </Button>
             </div>
           </div>

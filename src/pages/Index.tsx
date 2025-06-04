@@ -37,7 +37,7 @@ const Index = () => {
         
         <footer className="bg-muted/50 py-8 text-center text-muted-foreground">
           <div className="container mx-auto px-4">
-            <p>&copy; 2024 Your Name. Crafted with precision and attention to detail.</p>
+            <p>&copy; 2024 Mohammed Husain Fakih. Crafted with precision and attention to detail.</p>
           </div>
         </footer>
       </div>
