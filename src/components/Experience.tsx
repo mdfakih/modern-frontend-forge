@@ -1,7 +1,7 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building, Calendar } from "lucide-react";
+import { TechIcon } from "./TechIcon";
 
 const experiences = [
   {
@@ -139,7 +139,8 @@ export function Experience() {
                     
                     <div className="flex flex-wrap gap-2 mb-4">
                       {exp.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline">
+                        <Badge key={tech} variant="outline" className="flex items-center gap-1.5">
+                          <TechIcon name={tech} className="w-4 h-4" />
                           {tech}
                         </Badge>
                       ))}

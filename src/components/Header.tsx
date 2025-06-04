@@ -35,7 +35,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           <div className="text-xl font-bold gradient-text">
-            Mohammed Husain Fakih
+            MD Fakih
           </div>
 
           {/* Desktop Navigation */}

@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Code, Database, Globe, Palette, Users, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { TechIcon } from "./TechIcon";
 
 const skillCategories = [
   {
@@ -100,8 +101,9 @@ export function Skills() {
                       <Badge 
                         key={skill} 
                         variant="secondary" 
-                        className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                        className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-default flex items-center gap-1.5"
                       >
+                        <TechIcon name={skill} className="w-4 h-4" />
                         {skill}
                       </Badge>
                     ))}

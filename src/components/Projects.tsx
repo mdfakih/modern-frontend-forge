@@ -1,8 +1,8 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
+import { TechIcon } from "./TechIcon";
 
 const projects = [
   {
@@ -80,7 +80,8 @@ export function Projects() {
                   
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary">
+                      <Badge key={tech} variant="secondary" className="flex items-center gap-1.5">
+                        <TechIcon name={tech} className="w-4 h-4" />
                         {tech}
                       </Badge>
                     ))}
