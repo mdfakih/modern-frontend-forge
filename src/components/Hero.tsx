@@ -401,11 +401,11 @@ export function Hero() {
             <div className="flex items-center gap-2 text-lg text-muted-foreground">
               <Phone className="w-5 h-5" />
               <a 
-                href="tel:+919876543210" 
+                href="tel:+919048235660" 
                 className="hover:text-primary transition-colors cursor-pointer"
                 onClick={(e) => e.stopPropagation()}
               >
-                +91 98765 43210
+                +91 90482 35660
               </a>
             </div>
           </div>
@@ -420,7 +420,7 @@ export function Hero() {
 
           <div
             ref={buttonsRef}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
           >
             <Button
               size="lg"
