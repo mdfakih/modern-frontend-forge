@@ -27,7 +27,7 @@ export function Contact() {
 
   // Google Apps Script URL - Replace with your deployed script URL
   const GOOGLE_SCRIPT_URL =
-    'https://script.google.com/macros/s/AKfycbxLjCWcDar7kFH08cHiimAjFuhybKChFOIbWo3e4eA3ZqgO97DjoeLKBxRyFZGtwAIk/exec';
+    'https://script.google.com/macros/s/AKfycbyTddwfRD_8q-CIjyi2J1RxnZ0KKlRyvnI--5Xfkp-thkXMgXf5ZjK8lo4vzC1vuS7p/exec';
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
