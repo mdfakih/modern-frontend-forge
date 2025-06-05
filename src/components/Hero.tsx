@@ -221,9 +221,9 @@ export function Hero() {
         try {
           // Split the text by characters
           console.log('Attempting SplitText on:', nameRef.current);
-          splitTextInstance = new SplitText(nameRef.current, { type: 'chars' });
-          const chars = splitTextInstance.chars as HTMLElement[];
-          console.log('SplitText created chars:', chars);
+          splitTextInstance = new SplitText(nameRef.current, { type: 'words' });
+          const words = splitTextInstance.words as HTMLElement[];
+          console.log('SplitText created chars:', words);
 
           // Create signature container
           const signatureContainer = document.createElement('div');
@@ -232,9 +232,9 @@ export function Hero() {
           signatureContainer.appendChild(nameEl);
 
           // Add signature-letter class to each character
-          chars.forEach(char => {
-            char.classList.add('signature-letter');
-            char.setAttribute('data-letter', char.textContent || '');
+          words.forEach(word => {
+            word.classList.add('signature-letter');
+            word.setAttribute('data-letter', word.textContent || '');
           });
 
           // Create signature animation timeline
@@ -246,18 +246,18 @@ export function Hero() {
           });
 
           // Animate each character with a slight delay
-          chars.forEach((char, index) => {
+          words.forEach((word, index) => {
             // Random delay between 0 and 0.2 seconds for each character
             const randomDelay = Math.random() * 0.2;
             
-            signatureTimeline.to(char, {
+            signatureTimeline.to(word, {
             opacity: 1,
               duration: 0.5,
               delay: randomDelay,
               ease: "power2.out",
               onStart: () => {
                 // Add a subtle scale effect
-                gsap.fromTo(char, 
+                gsap.fromTo(word, 
                   { scale: 0.8, rotation: -5 },
                   { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(1.7)" }
                 );
@@ -268,13 +268,13 @@ export function Hero() {
           // Add hover effect with purple trail
           const onEnter = () => {
             signatureContainer.classList.add('signature-trail-active');
-            gsap.to(chars, {
+            gsap.to(words, {
               duration: 0.5,
               stagger: 0.02,
               ease: 'power2.out',
               onStart: () => {
-                chars.forEach(char => {
-                  const after = char.querySelector('::after');
+                words.forEach(word => {
+                  const after = word.querySelector('::after');
                   if (after) {
                     gsap.set(after, { opacity: 0 });
                   }
@@ -285,13 +285,13 @@ export function Hero() {
 
           const onLeave = () => {
             signatureContainer.classList.remove('signature-trail-active');
-            gsap.to(chars, {
+            gsap.to(words, {
               duration: 0.3,
               stagger: 0.01,
               ease: 'power2.in',
               onComplete: () => {
-                chars.forEach(char => {
-                  const after = char.querySelector('::after');
+                words.forEach(word => {
+                  const after = word.querySelector('::after');
                   if (after) {
                     gsap.set(after, { opacity: 0 });
                   }
@@ -375,7 +375,7 @@ export function Hero() {
           >
             <h1
               ref={nameRef}
-              className="text-[10rem] md:text-[11.5rem] font-normal tracking-tight text-black dark:text-white mb-2 cursor-pointer signature-text break-words"
+              className="text-[6rem] sm:text-[8rem] md:text-[11.5rem] font-normal tracking-tight text-black dark:text-white mb-2 cursor-pointer signature-text break-words"
             >
               {NAME}
             </h1>
