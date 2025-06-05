@@ -74,7 +74,7 @@ export function AnimatedBackground() {
           style={{
             position: 'absolute',
             fontSize: `${emojiData.size}rem`,
-            opacity: '0.05', // Decreased opacity
+            opacity: '0.25', // Decreased opacity
             userSelect: 'none',
             pointerEvents: 'none',
             // Z-index is handled by the container
