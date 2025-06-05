@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Download } from 'lucide-react';
@@ -14,13 +14,64 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+  const handleScroll = useCallback(() => {
+    setIsScrolled(window.scrollY > 50);
+  }, []);
 
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    if (!href) return;
+
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      // Close mobile menu if open
+      setIsMobileMenuOpen(false);
+      
+      // Get the header height for offset
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      
+      // Calculate the target position
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      
+      // Smooth scroll to the target
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+
+      // Update URL without triggering scroll
+      window.history.pushState(null, '', href);
+    }
+  }, []);
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  // Handle initial hash navigation
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetId = hash.replace('#', '');
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Wait for the page to load
+        setTimeout(() => {
+          const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    }
   }, []);
 
   return (
@@ -46,6 +97,7 @@ export function Header() {
               <a
                 key={item.name}
                 href={item.href}
+                onClick={scrollToSection}
                 className="text-sm font-medium transition-colors hover:text-primary relative group"
               >
                 {item.name}
@@ -97,8 +149,8 @@ export function Header() {
                 <a
                   key={item.name}
                   href={item.href}
+                  onClick={scrollToSection}
                   className="px-2 py-2 text-sm font-medium transition-colors hover:text-primary hover:bg-muted rounded"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </a>
