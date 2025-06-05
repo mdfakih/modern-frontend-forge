@@ -23,6 +23,9 @@ const skillCategories = [
       'HTML5',
       'CSS3',
       'JavaScript (ES6+)',
+      'Nodemailer',
+      'React Native',
+      'Razorpay Integration',
     ],
     color: 'from-blue-500 to-cyan-500',
   },
@@ -38,8 +41,7 @@ const skillCategories = [
     skills: [
       'MetaMask Integration',
       'Blockchain Interaction',
-      'Razorpay Integration',
-      'Nodemailer',
+      'Web3 Wallet Integration',
     ],
     color: 'from-purple-500 to-pink-500',
   },
@@ -146,8 +148,7 @@ export function Skills() {
             Technical <span className="gradient-text protest-text">Expertise</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive toolkit for building scalable, modern applications
-            with precision and elegance.
+          A refined skillset for building modern, scalable applications with precision and elegance.
           </p>
         </div>
 

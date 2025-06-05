@@ -109,7 +109,10 @@ export function Contact() {
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted transition-colors">
+              <a 
+                href="mailto:mf9049@gmail.com"
+                className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted transition-colors cursor-pointer"
+              >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
@@ -117,9 +120,12 @@ export function Contact() {
                   <p className="font-medium">Email</p>
                   <p className="text-muted-foreground">mf9049@gmail.com</p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted transition-colors">
+              <a 
+                href="tel:+919028435660"
+                className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted transition-colors cursor-pointer"
+              >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
@@ -127,7 +133,7 @@ export function Contact() {
                   <p className="font-medium">Phone</p>
                   <p className="text-muted-foreground">+91 9028435660</p>
                 </div>
-              </div>
+              </a>
 
               <div className="flex items-center gap-4 p-4 rounded-lg hover:bg-muted transition-colors">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">

@@ -251,7 +251,7 @@ export function Hero() {
             const randomDelay = Math.random() * 0.2;
             
             signatureTimeline.to(char, {
-              opacity: 1,
+            opacity: 1,
               duration: 0.5,
               delay: randomDelay,
               ease: "power2.out",
@@ -375,7 +375,7 @@ export function Hero() {
           >
             <h1
               ref={nameRef}
-              className="text-[10rem] md:text-[11.5rem] font-normal tracking-tight text-black dark:text-white mb-2 cursor-pointer signature-text"
+              className="text-[10rem] md:text-[11.5rem] font-normal tracking-tight text-black dark:text-white mb-2 cursor-pointer signature-text break-words"
             >
               {NAME}
             </h1>
@@ -398,9 +398,15 @@ export function Hero() {
               <MapPin className="h-4 w-4" />
               <span>Bhiwandi, Maharashtra, India</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              <span>+91 9028435660</span>
+            <div className="flex items-center gap-2 text-lg text-muted-foreground">
+              <Phone className="w-5 h-5" />
+              <a 
+                href="tel:+919876543210" 
+                className="hover:text-primary transition-colors cursor-pointer"
+                onClick={(e) => e.stopPropagation()}
+              >
+                +91 98765 43210
+              </a>
             </div>
           </div>
 

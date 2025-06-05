@@ -10,6 +10,7 @@ import { CustomCursor } from './components/CustomCursor';
 import { initSmoothScroll } from './lib/animations';
 import { Header } from './components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { AnimatedBackground } from './components/AnimatedBackground';
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <CustomCursor />
+          <AnimatedBackground />
           <Header />
           <div id="smooth-wrapper">
             <div id="smooth-content">
