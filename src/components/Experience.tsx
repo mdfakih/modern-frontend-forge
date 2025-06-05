@@ -210,8 +210,8 @@ export function Experience() {
           ref={titleRef}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Professional <span className="gradient-text">Journey</span>
+          <h2 className="text-4xl md:text-5xl font-normal mb-4">
+            Professional <span className="gradient-text" style={{ fontFamily: 'ProtestRiot, sans-serif' }}>Journey</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Building elegant solutions and leading teams across diverse projects

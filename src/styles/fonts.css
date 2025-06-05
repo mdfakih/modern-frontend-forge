@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'RightmanSignature';
+  src: url('../assets/RightmanSignature.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ProtestRiot';
+  src: url('../assets/ProtestRiot/ttf/ProtestRiot-Regular.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../assets/Geist Mono/Geist-Mono.glyphs') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} 

@@ -83,8 +83,8 @@ export function Contact() {
           ref={titleRef}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Let's <span className="gradient-text">Connect</span>
+          <h2 className="text-4xl md:text-5xl font-normal mb-4">
+            Let's <span className="gradient-text" style={{ fontFamily: 'ProtestRiot, sans-serif' }}>Connect</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to bring your next project to life with precision and

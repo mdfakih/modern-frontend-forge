@@ -142,8 +142,8 @@ export function Skills() {
           ref={titleRef}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Technical <span className="gradient-text">Expertise</span>
+          <h2 className="text-4xl md:text-5xl font-normal mb-4">
+            Technical <span className="gradient-text protest-text">Expertise</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A comprehensive toolkit for building scalable, modern applications

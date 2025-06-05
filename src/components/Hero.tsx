@@ -14,64 +14,65 @@ gsap.registerPlugin(SplitText);
 
 const NAME = 'Mohammed Husain Fakih';
 
-// Update styles for the matrix trail effect with purple colors
-const matrixStyles = `
-  .matrix-letter {
+// Update styles for the signature animation
+const signatureStyles = `
+  .signature-letter {
     position: relative;
     display: inline-block;
-    color: inherit;
+    opacity: 0;
+    transform-origin: left center;
     transition: color 0.3s ease;
   }
 
-  .matrix-letter::after {
+  .signature-letter::after {
     content: attr(data-letter);
     position: absolute;
     left: 0;
     top: 0;
-    color: #a855f7; /* Changed to purple-500 */
+    color: #a855f7;
     opacity: 0;
     transform: translateY(0);
-    text-shadow: 0 0 8px #a855f7, 0 0 16px #a855f7, 0 0 24px #6366f1; /* Added indigo for extra glow */
+    text-shadow: 0 0 8px #a855f7, 0 0 16px #a855f7, 0 0 24px #6366f1;
     pointer-events: none;
     z-index: -1;
   }
 
-  .matrix-trail-active .matrix-letter::after {
-    animation: matrixTrail 1.5s ease-out forwards;
+  .signature-container {
+    position: relative;
+    display: inline-block;
   }
 
-  @keyframes matrixTrail {
+  .signature-container:hover {
+    text-shadow: 0 0 8px #a855f7, 0 0 16px #a855f7, 0 0 24px #6366f1;
+  }
+
+  .signature-trail-active .signature-letter::after {
+    animation: signatureTrail 1.5s ease-out forwards;
+  }
+
+  @keyframes signatureTrail {
     0% {
       opacity: 0.8;
       transform: translateY(0);
       filter: blur(0px);
-      color: #a855f7; /* Start with purple */
+      color: #a855f7;
     }
     50% {
-      color: #c084fc; /* Lighter purple in the middle */
+      color: #c084fc;
     }
     100% {
       opacity: 0;
       transform: translateY(20px);
       filter: blur(8px);
-      color: #6366f1; /* End with indigo */
+      color: #6366f1;
     }
-  }
-
-  .matrix-name {
-    position: relative;
-    display: inline-block;
-  }
-
-  .matrix-name:hover {
-    text-shadow: 0 0 8px #a855f7, 0 0 16px #a855f7, 0 0 24px #6366f1;
   }
 `;
 
 // Add the styles to the document
 if (typeof document !== 'undefined') {
   const styleSheet = document.createElement('style');
-  styleSheet.textContent = matrixStyles;
+  styleSheet.textContent = signatureStyles;
   document.head.appendChild(styleSheet);
 }
 
@@ -218,69 +219,55 @@ export function Hero() {
         }
 
         try {
-          // Split the text by characters for both effects
+          // Split the text by characters
           console.log('Attempting SplitText on:', nameRef.current);
-          splitTextInstance = new SplitText(nameRef.current, { type: 'chars,words' });
+          splitTextInstance = new SplitText(nameRef.current, { type: 'chars' });
           const chars = splitTextInstance.chars as HTMLElement[];
           console.log('SplitText created chars:', chars);
 
-          // Add matrix-letter class and data-letter attribute to each character
+          // Create signature container
+          const signatureContainer = document.createElement('div');
+          signatureContainer.className = 'signature-container';
+          nameEl.parentNode?.insertBefore(signatureContainer, nameEl);
+          signatureContainer.appendChild(nameEl);
+
+          // Add signature-letter class to each character
           chars.forEach(char => {
-            char.classList.add('matrix-letter');
+            char.classList.add('signature-letter');
             char.setAttribute('data-letter', char.textContent || '');
           });
 
-          // Wrap the name in a container for the effects
-          const nameContainer = document.createElement('div');
-          nameContainer.className = 'matrix-name';
-          nameEl.parentNode?.insertBefore(nameContainer, nameEl);
-          nameContainer.appendChild(nameEl);
-
-          // --- 3D Depth Drop Entrance Animation ---
-          const entranceTimeline = gsap.timeline({
-            defaults: { ease: 'power3.out' }
+          // Create signature animation timeline
+          const signatureTimeline = gsap.timeline({
+            defaults: { 
+              ease: "power2.inOut",
+              duration: 0.3
+            }
           });
 
-          // Set initial state for 3D effect
-          gsap.set(chars, {
-            opacity: 0,
-            rotationX: -90,
-            transformOrigin: '50% 0%',
-            z: -1000, // Start deep in 3D space
-            perspective: 1000
+          // Animate each character with a slight delay
+          chars.forEach((char, index) => {
+            // Random delay between 0 and 0.2 seconds for each character
+            const randomDelay = Math.random() * 0.2;
+            
+            signatureTimeline.to(char, {
+              opacity: 1,
+              duration: 0.5,
+              delay: randomDelay,
+              ease: "power2.out",
+              onStart: () => {
+                // Add a subtle scale effect
+                gsap.fromTo(char, 
+                  { scale: 0.8, rotation: -5 },
+                  { scale: 1, rotation: 0, duration: 0.3, ease: "back.out(1.7)" }
+                );
+              }
+            }, index * 0.1); // Stagger the start of each character
           });
 
-          // Add 3D drop animation to timeline
-          entranceTimeline.to(chars, {
-            opacity: 1,
-            rotationX: 0,
-            z: 0,
-            duration: 1.2,
-            stagger: {
-              amount: 0.8,
-              from: 'random', // Random start for more dynamic effect
-              grid: 'auto',
-              axis: 'x'
-            },
-            ease: 'power3.out'
-          });
-
-          // Add a subtle bounce at the end
-          entranceTimeline.to(chars, {
-            y: -5,
-            duration: 0.2,
-            stagger: 0.02,
-            ease: 'power2.out',
-            yoyo: true,
-            repeat: 1
-          }, '-=0.3'); // Slightly overlap with the end of the drop
-
-          cleanupFunctions.push(() => entranceTimeline.kill());
-
-          // --- Keep existing hover effect ---
+          // Add hover effect with purple trail
           const onEnter = () => {
-            nameContainer.classList.add('matrix-trail-active');
-            // Add staggered trail effect to each character
+            signatureContainer.classList.add('signature-trail-active');
             gsap.to(chars, {
               duration: 0.5,
               stagger: 0.02,
@@ -297,8 +284,7 @@ export function Hero() {
           };
 
           const onLeave = () => {
-            nameContainer.classList.remove('matrix-trail-active');
-            // Reset all characters
+            signatureContainer.classList.remove('signature-trail-active');
             gsap.to(chars, {
               duration: 0.3,
               stagger: 0.01,
@@ -314,20 +300,20 @@ export function Hero() {
             });
           };
 
-          nameContainer.addEventListener('mouseenter', onEnter);
-          nameContainer.addEventListener('mouseleave', onLeave);
+          signatureContainer.addEventListener('mouseenter', onEnter);
+          signatureContainer.addEventListener('mouseleave', onLeave);
 
           cleanupFunctions.push(() => {
-            console.log('Cleaning up matrix effect and SplitText.');
-            nameContainer.removeEventListener('mouseenter', onEnter);
-            nameContainer.removeEventListener('mouseleave', onLeave);
+            console.log('Cleaning up signature effect and SplitText.');
+            signatureContainer.removeEventListener('mouseenter', onEnter);
+            signatureContainer.removeEventListener('mouseleave', onLeave);
             if (splitTextInstance) splitTextInstance.revert();
             // Restore original DOM structure
-            if (nameEl.parentNode === nameContainer) {
-              nameContainer.parentNode?.insertBefore(nameEl, nameContainer);
-              nameContainer.remove();
+            if (nameEl.parentNode === signatureContainer) {
+              signatureContainer.parentNode?.insertBefore(nameEl, signatureContainer);
+              signatureContainer.remove();
             }
-            console.log('Matrix effect and SplitText cleanup complete.');
+            console.log('Signature effect and SplitText cleanup complete.');
           });
 
         } catch (error) {
@@ -389,10 +375,7 @@ export function Hero() {
           >
             <h1
               ref={nameRef}
-              className="text-5xl md:text-7xl font-bold tracking-tight text-black dark:text-white mb-2 cursor-pointer"
-              style={{
-                fontFamily: 'Great Vibes, cursive',
-              }}
+              className="text-[10rem] md:text-[11.5rem] font-normal tracking-tight text-black dark:text-white mb-2 cursor-pointer signature-text"
             >
               {NAME}
             </h1>
